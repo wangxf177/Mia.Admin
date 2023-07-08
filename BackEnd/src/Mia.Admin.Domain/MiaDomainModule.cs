@@ -10,7 +10,7 @@ namespace Mia.Admin;
     typeof(AdminDomainSharedModule),
     typeof(AbpDddDomainModule)
 )]
-public class AdminDomainModule : AbpModule
+public class MiaDomainModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

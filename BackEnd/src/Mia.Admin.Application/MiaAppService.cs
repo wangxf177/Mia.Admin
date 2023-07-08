@@ -8,10 +8,10 @@ namespace Mia.Admin;
 
 /* Inherit your application services from this class.
  */
-public abstract class AdminAppService : ApplicationService
+public abstract class MiaAppService : ApplicationService
 {
-    protected AdminAppService()
+    protected MiaAppService()
     {
-        LocalizationResource = typeof(AdminResource);
+        LocalizationResource = typeof(MiaResource);
     }
 }

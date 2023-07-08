@@ -2,9 +2,9 @@
 
 namespace Mia.Admin;
 
-public class AdminApplicationAutoMapperProfile : Profile
+public class MiaApplicationAutoMapperProfile : Profile
 {
-    public AdminApplicationAutoMapperProfile()
+    public MiaApplicationAutoMapperProfile()
     {
         /* You can configure your AutoMapper mapping configuration here.
          * Alternatively, you can split your mapping configurations

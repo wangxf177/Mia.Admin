@@ -5,18 +5,18 @@ using Volo.Abp.Modularity;
 namespace Mia.Admin;
 
 [DependsOn(
-    typeof(AdminDomainModule),
-    typeof(AdminApplicationContractsModule),
+    typeof(MiaDomainModule),
+    typeof(MiaApplicationContractsModule),
     typeof(AbpAutoMapperModule),
     typeof(AbpDddApplicationModule)
     )]
-public class AdminApplicationModule : AbpModule
+public class MiaApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpAutoMapperOptions>(options =>
         {
-            options.AddMaps<AdminApplicationModule>();
+            options.AddMaps<MiaApplicationModule>();
         });
     }
 }

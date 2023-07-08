@@ -1,6 +1,6 @@
 ﻿namespace Mia.Admin;
 
-public static class AdminConsts
+public static class MiaConsts
 {
     public const string DbTablePrefix = "App";
 

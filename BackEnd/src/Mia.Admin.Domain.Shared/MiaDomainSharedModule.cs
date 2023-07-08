@@ -29,16 +29,16 @@ public class AdminDomainSharedModule : AbpModule
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Resources
-                .Add<AdminResource>("en")
+                .Add<MiaResource>("en")
                 .AddBaseTypes(typeof(AbpValidationResource))
                 .AddVirtualJson("/Localization/Admin");
 
-            options.DefaultResourceType = typeof(AdminResource);
+            options.DefaultResourceType = typeof(MiaResource);
         });
 
         Configure<AbpExceptionLocalizationOptions>(options =>
         {
-            options.MapCodeNamespace("Admin", typeof(AdminResource));
+            options.MapCodeNamespace("Admin", typeof(MiaResource));
         });
     }
 }

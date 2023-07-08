@@ -252,14 +252,14 @@ paket-files/
 *.sln.iml
 
 # TeamSpace
-src/PwC.TeamSpace.Web/Logs/*
-src/PwC.TeamSpace.Web.Host/Logs/*
-src/PwC.TeamSpace.AuthServer/Logs/*
-src/PwC.TeamSpace.HttpApi.Host/Logs/*
-src/PwC.TeamSpace.HttpApi.Host/Logs/*
-src/PwC.TeamSpace.DbMigrator/Logs/*
-src/PwC.TeamSpace.Blazor.Server/Logs/*
-src/PwC.TeamSpace.Blazor.Server.Tiered/Logs/*
+src/Mia.Admin.Web/Logs/*
+src/Mia.Admin.Web.Host/Logs/*
+src/Mia.Admin.AuthServer/Logs/*
+src/Mia.Admin.HttpApi.Host/Logs/*
+src/Mia.Admin.HttpApi.Host/Logs/*
+src/Mia.Admin.DbMigrator/Logs/*
+src/Mia.Admin.Blazor.Server/Logs/*
+src/Mia.Admin.Blazor.Server.Tiered/Logs/*
 
 # Use abp install-libs to restore.
 **/wwwroot/libs/*

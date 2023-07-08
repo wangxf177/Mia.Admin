@@ -12,9 +12,9 @@ namespace Mia.Admin.MongoDb
     /// <summary>
     /// 审计日志字段设置，当使用仓储新增，修改数据的时候会使用
     /// </summary>
-    internal class AdminAuditPropertySetter : AuditPropertySetter, IAuditPropertySetter, ITransientDependency
+    internal class MiaAuditPropertySetter : AuditPropertySetter, IAuditPropertySetter, ITransientDependency
     {
-        public AdminAuditPropertySetter(ICurrentUser currentUser, ICurrentTenant currentTenant, IClock clock) : base(currentUser, currentTenant, clock)
+        public MiaAuditPropertySetter(ICurrentUser currentUser, ICurrentTenant currentTenant, IClock clock) : base(currentUser, currentTenant, clock)
         {
         }
 

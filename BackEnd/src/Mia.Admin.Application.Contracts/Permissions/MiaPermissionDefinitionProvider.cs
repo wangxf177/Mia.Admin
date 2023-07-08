@@ -15,6 +15,6 @@
 
 //    private static LocalizableString L(string name)
 //    {
-//        return LocalizableString.Create<AdminResource>(name);
+//        return LocalizableString.Create<MiaResource>(name);
 //    }
 //}

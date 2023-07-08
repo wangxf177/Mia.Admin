@@ -5,9 +5,9 @@ using Volo.Abp.MongoDB;
 
 namespace Mia.Admin.Repositories
 {
-    public class CommentRepository : AdminRepository<Comment>, ICommentRepository
+    public class CommentRepository : MiaRepository<Comment>, ICommentRepository
     {
-        public CommentRepository(IMongoDbContextProvider<AdminMongoDbContext> dbContextProvider) : base(dbContextProvider)
+        public CommentRepository(IMongoDbContextProvider<MiaMongoDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
     }

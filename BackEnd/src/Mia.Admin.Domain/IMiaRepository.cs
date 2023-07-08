@@ -4,7 +4,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Mia.Admin
 {
-    public interface IAdminRepository<TEntity> : ITransientDependency, IRepository<TEntity, string> where TEntity : class, IEntity<string>
+    public interface IMiaRepository<TEntity> : ITransientDependency, IRepository<TEntity, string> where TEntity : class, IEntity<string>
     {
     }
 }

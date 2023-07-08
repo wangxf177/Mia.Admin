@@ -1,6 +1,6 @@
 ﻿namespace Mia.Admin.Messages
 {
-    public interface ICommentRepository : IAdminRepository<Comment>
+    public interface ICommentRepository : IMiaRepository<Comment>
     {
 
     }

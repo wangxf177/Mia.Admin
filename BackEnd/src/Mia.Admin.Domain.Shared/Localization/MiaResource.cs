@@ -3,7 +3,7 @@
 namespace Mia.Admin.Localization;
 
 [LocalizationResourceName("Admin")]
-public class AdminResource
+public class MiaResource
 {
 
 }

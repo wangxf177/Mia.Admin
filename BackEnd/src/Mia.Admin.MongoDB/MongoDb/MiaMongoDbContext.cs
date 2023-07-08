@@ -8,7 +8,7 @@ using Volo.Abp.MongoDB;
 namespace Mia.Admin.MongoDB;
 
 [ConnectionStringName("Default")]
-public class AdminMongoDbContext : AbpMongoDbContext
+public class MiaMongoDbContext : AbpMongoDbContext
 {
     public IMongoCollection<Comment> Comments => Collection<Comment>();
 

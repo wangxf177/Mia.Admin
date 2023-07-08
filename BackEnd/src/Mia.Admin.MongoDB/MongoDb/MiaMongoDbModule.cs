@@ -7,15 +7,15 @@ using Volo.Abp.Uow;
 
 namespace Mia.Admin.MongoDB;
 
-[DependsOn(typeof(AdminDomainModule), typeof(AbpMongoDbModule))]
-public class AdminMongoDbModule : AbpModule
+[DependsOn(typeof(MiaDomainModule), typeof(AbpMongoDbModule))]
+public class MiaMongoDbModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddMongoDbContext<AdminMongoDbContext>(options =>
+        context.Services.AddMongoDbContext<MiaMongoDbContext>(options =>
         {
             options.AddDefaultRepositories();
-            options.Services.AddTransient<IAuditPropertySetter, AdminAuditPropertySetter>();
+            options.Services.AddTransient<IAuditPropertySetter, MiaAuditPropertySetter>();
         });
 
         Configure<AbpUnitOfWorkDefaultOptions>(options =>

@@ -23,12 +23,12 @@ namespace Mia.Admin;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(AdminApplicationModule),
-    typeof(AdminMongoDbModule),
+    typeof(MiaApplicationModule),
+    typeof(MiaMongoDbModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
 )]
-public class AdminHttpApiHostModule : AbpModule
+public class MiaHttpApiHostModule : AbpModule
 {
 
     public override void ConfigureServices(ServiceConfigurationContext context)
@@ -74,13 +74,13 @@ public class AdminHttpApiHostModule : AbpModule
                 options.FileSets.ReplaceEmbeddedByPhysical<AdminDomainSharedModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}Mia.Admin.Domain.Shared"));
-                options.FileSets.ReplaceEmbeddedByPhysical<AdminDomainModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<MiaDomainModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}Mia.Admin.Domain"));
-                options.FileSets.ReplaceEmbeddedByPhysical<AdminApplicationContractsModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<MiaApplicationContractsModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}Mia.Admin.Application.Contracts"));
-                options.FileSets.ReplaceEmbeddedByPhysical<AdminApplicationModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<MiaApplicationModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}Mia.Admin.Application"));
             });
@@ -91,7 +91,7 @@ public class AdminHttpApiHostModule : AbpModule
     {
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
-            options.ConventionalControllers.Create(typeof(AdminApplicationModule).Assembly);
+            options.ConventionalControllers.Create(typeof(MiaApplicationModule).Assembly);
         });
     }
 

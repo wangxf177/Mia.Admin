@@ -6,9 +6,9 @@ using Volo.Abp.MongoDB;
 
 namespace Mia.Admin.MongoDb
 {
-    public class AdminRepository<TEntity> : MongoDbRepository<AdminMongoDbContext, TEntity, string>, IAdminRepository<TEntity> where TEntity : class, IEntity<string>
+    public class MiaRepository<TEntity> : MongoDbRepository<MiaMongoDbContext, TEntity, string>, IMiaRepository<TEntity> where TEntity : class, IEntity<string>
     {
-        public AdminRepository(IMongoDbContextProvider<AdminMongoDbContext> dbContextProvider) : base(dbContextProvider)
+        public MiaRepository(IMongoDbContextProvider<MiaMongoDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
 

@@ -9,10 +9,10 @@ namespace Mia.Admin;
     typeof(AbpDddApplicationContractsModule),
     typeof(AbpObjectExtendingModule)
 )]
-public class AdminApplicationContractsModule : AbpModule
+public class MiaApplicationContractsModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
-        AdminDtoExtensions.Configure();
+        MiaDtoExtensions.Configure();
     }
 }

@@ -6,17 +6,17 @@ namespace Mia.Admin.Controllers
 {
     public class MessageController : MiaControllerBase
     {
-        private readonly IAdminRepository<Comment> _AdminRepository;
+        private readonly IMiaRepository<Comment> _MiaRepository;
 
-        public MessageController(IAdminRepository<Comment> AdminRepository)
+        public MessageController(IMiaRepository<Comment> MiaRepository)
         {
-            _AdminRepository = AdminRepository;
+            _MiaRepository = MiaRepository;
         }
 
         [HttpPost]
         public async Task<bool> Create()
         {
-            await _AdminRepository.InsertAsync(new Comment
+            await _MiaRepository.InsertAsync(new Comment
             {
                 TxtResponse = "This is a test message!"
             });

@@ -2,7 +2,7 @@
 
 namespace Mia.Admin;
 
-public static class AdminDtoExtensions
+public static class MiaDtoExtensions
 {
     private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 
