@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Mia.Admin</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mia.Admin.Domain\Mia.Admin.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.MongoDB" Version="7.2.2" />
+	<PackageReference Include="MongoDB.Driver" Version="2.20.0" />
+	<PackageReference Include="MongoDB.Driver.GridFS" Version="2.20.0" />
+  </ItemGroup>
+
+</Project>
