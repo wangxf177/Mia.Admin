@@ -9,5 +9,6 @@ namespace Mia.Admin.AggregateRoot.Audited
         string C4ModifyBy { get; set; }
         DateTime C4ModifyDate { get; set; }
         List<C4EditHistory> C4EditHistory { get; set; }
+        void AddHistory(C4EditHistory history);
     }
 }

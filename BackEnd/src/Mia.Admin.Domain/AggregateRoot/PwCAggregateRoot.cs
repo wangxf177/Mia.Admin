@@ -23,5 +23,11 @@ namespace Mia.Admin.AggregateRoot
         public string C4ModifyBy { get; set; } = string.Empty;
         public DateTime C4ModifyDate { get; set; }
         public List<C4EditHistory> C4EditHistory { get; set; } = new List<C4EditHistory>();
+
+        public void AddHistory(C4EditHistory history)
+        {
+            C4EditHistory ??= new List<C4EditHistory>();
+            C4EditHistory.Add(history);
+        }
     }
 }

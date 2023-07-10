@@ -20,42 +20,42 @@ namespace Mia.Admin.MongoDb
 
         protected override void SetCreationTime(object targetObject)
         {
-            if (targetObject is IMiaCreationAuditedObject MiaAudited
-                && MiaAudited.C4CreateDate == default)
+            if (targetObject is IMiaCreationAuditedObject miaAudited
+                && miaAudited.C4CreateDate == default)
             {
-                ObjectHelper.TrySetProperty(MiaAudited, x => x.C4CreateDate, () => Clock.Now);
+                ObjectHelper.TrySetProperty(miaAudited, x => x.C4CreateDate, () => Clock.Now);
             }
         }
 
         protected override void SetCreatorId(object targetObject)
         {
             var currentUserId = CurrentUser.GetUserId();
-            if (targetObject is IMiaCreationAuditedObject MiaAudited
+            if (targetObject is IMiaCreationAuditedObject miaAudited
                 && !string.IsNullOrWhiteSpace(currentUserId)
-                && string.IsNullOrWhiteSpace(MiaAudited.C4CreateById))
+                && string.IsNullOrWhiteSpace(miaAudited.C4CreateById))
             {
-                ObjectHelper.TrySetProperty(MiaAudited, x => x.C4CreateById, () => currentUserId);
-                ObjectHelper.TrySetProperty(MiaAudited, x => x.C4CreateBy, () => CurrentUser.UserName);
+                ObjectHelper.TrySetProperty(miaAudited, x => x.C4CreateById, () => currentUserId);
+                ObjectHelper.TrySetProperty(miaAudited, x => x.C4CreateBy, () => CurrentUser.UserName);
             }
         }
 
         protected override void SetLastModificationTime(object targetObject)
         {
-            if (targetObject is IMiaModificationAuditedObject MiaAudited)
+            if (targetObject is IMiaModificationAuditedObject miaAudited)
             {
-                ObjectHelper.TrySetProperty(MiaAudited, x => x.C4ModifyDate, () => Clock.Now);
+                ObjectHelper.TrySetProperty(miaAudited, x => x.C4ModifyDate, () => Clock.Now);
             }
         }
 
         protected override void SetLastModifierId(object targetObject)
         {
             var currentUserId = CurrentUser.GetUserId();
-            if (targetObject is IMiaModificationAuditedObject MiaAudit
+            if (targetObject is IMiaModificationAuditedObject miaAudit
                 && !string.IsNullOrWhiteSpace(currentUserId))
             {
-                ObjectHelper.TrySetProperty(MiaAudit, x => x.C4ModifyById, () => currentUserId);
-                ObjectHelper.TrySetProperty(MiaAudit, x => x.C4ModifyBy, () => CurrentUser.UserName);
-                MiaAudit.C4EditHistory.Add(new C4EditHistory
+                ObjectHelper.TrySetProperty(miaAudit, x => x.C4ModifyById, () => currentUserId);
+                ObjectHelper.TrySetProperty(miaAudit, x => x.C4ModifyBy, () => CurrentUser.UserName);
+                miaAudit.AddHistory(new C4EditHistory
                 {
 
                 });
