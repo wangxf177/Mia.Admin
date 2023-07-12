@@ -10,7 +10,7 @@ public class FakeCurrentPrincipalAccessor : ThreadCurrentPrincipalAccessor
 {
     private readonly static ClaimsPrincipal claimsPrincipal = new(new ClaimsIdentity(new List<Claim>
         {
-            new Claim(AbpClaimTypes.UserId, "CN553909"),
+            new Claim(AbpClaimTypes.UserId, "G1704041"),
             new Claim(AbpClaimTypes.UserName, "Bruce X Wang"),
             new Claim(AbpClaimTypes.Email, "wangxf177@163.com")
         }));
