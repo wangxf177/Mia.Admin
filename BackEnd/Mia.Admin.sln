@@ -29,6 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mia.Admin.MongoDB.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mia.Admin.TestBase", "test\Mia.Admin.TestBase\Mia.Admin.TestBase.csproj", "{20E92112-B17D-4F3C-AB33-1D1757556ABB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mia.Admin.HttpApi", "src\Mia.Admin.HttpApi\Mia.Admin.HttpApi.csproj", "{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mia.Admin.EntityFrameworkCore", "src\Mia.Admin.EntityFrameworkCore\Mia.Admin.EntityFrameworkCore.csproj", "{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,14 @@ Global
 		{20E92112-B17D-4F3C-AB33-1D1757556ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20E92112-B17D-4F3C-AB33-1D1757556ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E92112-B17D-4F3C-AB33-1D1757556ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +107,8 @@ Global
 		{0385617C-1F38-4AB4-9D7C-DB071E56E900} = {A32C6515-5BE1-4AAC-A1AD-E8FBEEE7253A}
 		{9C559A2E-BCE8-4EE2-83D2-D2FC957DF90C} = {A32C6515-5BE1-4AAC-A1AD-E8FBEEE7253A}
 		{20E92112-B17D-4F3C-AB33-1D1757556ABB} = {A32C6515-5BE1-4AAC-A1AD-E8FBEEE7253A}
+		{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mia.Admin.Application\Mia.Admin.Application.csproj" />
+    <ProjectReference Include="..\Mia.Admin.HttpApi\Mia.Admin.HttpApi.csproj" />
     <ProjectReference Include="..\Mia.Admin.MongoDB\Mia.Admin.MongoDB.csproj" />
   </ItemGroup>
 

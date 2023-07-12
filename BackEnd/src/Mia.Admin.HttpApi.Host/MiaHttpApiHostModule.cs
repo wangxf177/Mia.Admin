@@ -1,14 +1,22 @@
+using Mia.Admin.MongoDB;
+using Mia.Admin.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
-using Mia.Admin.MongoDB;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.AntiForgery;
@@ -26,7 +34,8 @@ namespace Mia.Admin;
     typeof(MiaApplicationModule),
     typeof(MiaMongoDbModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(MiaHttpApiModule)
 )]
 public class MiaHttpApiHostModule : AbpModule
 {
@@ -42,6 +51,7 @@ public class MiaHttpApiHostModule : AbpModule
         ConfigureVirtualFileSystem(context);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
+        ConfigureJwtServices(context, configuration);
     }
 
     private void ConfigAntiForgery()
@@ -51,6 +61,54 @@ public class MiaHttpApiHostModule : AbpModule
             options.AutoValidateIgnoredHttpMethods.Add("POST");
         });
     }
+
+    private void ConfigureJwtServices(ServiceConfigurationContext context, IConfiguration configuration)
+    {
+        Configure<JwtConfig>(configuration.GetSection("JwtConfig"));
+        context.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(config =>
+        {
+            var secret = Encoding.UTF8.GetBytes(configuration["JwtConfig:Secret"] ?? "");
+            config.TokenValidationParameters = new TokenValidationParameters
+            {
+                IssuerSigningKey = new SymmetricSecurityKey(secret),
+                ValidIssuer = configuration["JwtConfig:Issuer"],
+                ValidAudience = configuration["JwtConfig:Audience"],
+                ClockSkew = TimeSpan.Zero,
+                ValidateIssuerSigningKey = true,
+            };
+            config.Events = new JwtBearerEvents
+            {
+                //token校验失败后执行
+                OnChallenge = context =>
+                {
+                    context.HandleResponse();
+                    string msg = string.Empty;
+                    var token = context.Request.Headers[HeaderNames.Authorization];
+                    if (string.IsNullOrEmpty(token) || token.ToString().ToLower() == "bearer")
+                    {
+                        msg = "Token cannot be empty.";
+                    }
+                    else
+                    {
+                        string errorDescription = !string.IsNullOrEmpty(context.ErrorDescription) ? "ErrorDescription : " + context.ErrorDescription : "";
+                        string error = !string.IsNullOrEmpty(context.Error) ? "Error : " + context.Error : "";
+                        msg = error + errorDescription;
+                    }
+
+                    var result = JsonConvert.SerializeObject(new { state = "0", message = msg });
+                    context.Response.ContentType = "application/json";
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    context.Response.WriteAsync(result);
+                    return Task.FromResult(0);
+                }
+            };
+        });
+    }
+
 
     private void ConfigureUrls(IConfiguration configuration)
     {

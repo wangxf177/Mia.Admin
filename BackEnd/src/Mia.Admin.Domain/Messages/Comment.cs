@@ -1,11 +1,11 @@
-﻿using Mia.Admin.AggregateRoot;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Volo.Abp.Domain.Entities;
 
 namespace Mia.Admin.Messages
 {
-    public class Comment : MiaFullAggregateRoot
+    public class Comment : AggregateRoot<Guid>
     {
         public string TxtResponse { get; set; } = string.Empty;
         public int C4LikeCount { get; set; }
