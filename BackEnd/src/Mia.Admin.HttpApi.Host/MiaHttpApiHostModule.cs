@@ -39,7 +39,6 @@ namespace Mia.Admin;
 )]
 public class MiaHttpApiHostModule : AbpModule
 {
-
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
@@ -47,7 +46,7 @@ public class MiaHttpApiHostModule : AbpModule
 
         ConfigAntiForgery();
         ConfigureUrls(configuration);
-        ConfigureConventionalControllers();
+        //ConfigureConventionalControllers();
         ConfigureVirtualFileSystem(context);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
