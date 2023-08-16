@@ -14,13 +14,17 @@ namespace Mia.Admin.Account
             _jwtConfig = jwtConfig.Value;
         }
 
+        /// <summary>
+        /// 登录操作
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         public async Task<LoginResultDto> LoginAsync(LoginDto model)
         {
             JwtUser user = new JwtUser();
 
             var token = JwtTokenBuilder.CreateTokens(_jwtConfig, user);
-
 
             return await Task.FromResult(new LoginResultDto(token.AccessToken, token.RefreshToken, ""));
         }

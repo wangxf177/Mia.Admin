@@ -1,3 +1,4 @@
+using Mia.Admin.Extensions;
 using Mia.Admin.MongoDB;
 using Mia.Admin.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +13,6 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -46,7 +46,7 @@ public class MiaHttpApiHostModule : AbpModule
 
         ConfigAntiForgery();
         ConfigureUrls(configuration);
-        //ConfigureConventionalControllers();
+        ConfigureConventionalControllers();
         ConfigureVirtualFileSystem(context);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
@@ -154,18 +154,39 @@ public class MiaHttpApiHostModule : AbpModule
 
     private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
     {
-        context.Services.AddAbpSwaggerGenWithOAuth(
-            configuration["AuthServer:Authority"],
-            new Dictionary<string, string>
+        context.Services.ConfigSwaggerDefaultDocumentation(typeof(MiaApplicationModule).Assembly);
+        context.Services.ConfigSwaggerDefaultDocumentation(typeof(MiaApplicationContractsModule).Assembly);
+        context.Services.ConfigSwaggerDefaultDocumentation(typeof(MiaHttpApiModule).Assembly);
+
+        context.Services.AddAbpSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "Teamspace API", Version = "v1" });
+            options.CustomSchemaIds(type => type.FullName);
+            options.DocInclusionPredicate((docName, description) => true);
+            options.HideAbpEndpoints();
+            options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
             {
-                    {"Admin", "Admin API"}
-            },
-            options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Admin API", Version = "v1" });
-                options.DocInclusionPredicate((docName, description) => true);
-                options.CustomSchemaIds(type => type.FullName);
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme."
             });
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "bearerAuth"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+        });
     }
 
     private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
