@@ -6,7 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Volo.Abp.MongoDB;
 
-namespace Mia.Admin.MongoDb
+namespace Mia.Admin
 {
     internal class MiaFileService : IMiaFileService
     {

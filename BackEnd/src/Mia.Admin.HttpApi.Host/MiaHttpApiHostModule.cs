@@ -1,5 +1,4 @@
 using Mia.Admin.Extensions;
-using Mia.Admin.MongoDB;
 using Mia.Admin.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +14,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp;
@@ -162,7 +162,18 @@ public class MiaHttpApiHostModule : AbpModule
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "Teamspace API", Version = "v1" });
             options.CustomSchemaIds(type => type.FullName);
-            options.DocInclusionPredicate((docName, description) => true);
+            options.DocInclusionPredicate((docName, description) =>
+            {
+                if (description.ActionDescriptor.DisplayName?.Contains("Volo") == false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            });
+
             options.HideAbpEndpoints();
             options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
             {

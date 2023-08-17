@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Mia.Admin.MongoDb;
+﻿using Mia.Admin.MongoDB;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Auditing;
 using Volo.Abp.Modularity;
 using Volo.Abp.MongoDB;
 using Volo.Abp.Uow;
 
-namespace Mia.Admin.MongoDB;
+namespace Mia.Admin;
 
 [DependsOn(typeof(MiaDomainModule), typeof(AbpMongoDbModule))]
 public class MiaMongoDbModule : AbpModule

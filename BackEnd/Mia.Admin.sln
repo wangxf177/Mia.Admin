@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mia.Admin.MongoDB.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mia.Admin.TestBase", "test\Mia.Admin.TestBase\Mia.Admin.TestBase.csproj", "{20E92112-B17D-4F3C-AB33-1D1757556ABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mia.Admin.HttpApi", "src\Mia.Admin.HttpApi\Mia.Admin.HttpApi.csproj", "{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mia.Admin.HttpApi", "src\Mia.Admin.HttpApi\Mia.Admin.HttpApi.csproj", "{3A4B9BE5-2EA4-4782-9BFA-60D6DD1B764E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mia.Admin.EntityFrameworkCore", "src\Mia.Admin.EntityFrameworkCore\Mia.Admin.EntityFrameworkCore.csproj", "{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mia.Admin.EntityFrameworkCore", "src\Mia.Admin.EntityFrameworkCore\Mia.Admin.EntityFrameworkCore.csproj", "{3856DDDB-5E7B-4F38-BB75-99BEE627C8B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -81,7 +81,7 @@
 import { useQuasar } from 'quasar';
 import { onBeforeMount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { login } from '../service/user';
+import { loginIn } from '../service/account';
 const router = useRouter();
 const $q = useQuasar();
 
@@ -91,7 +91,11 @@ const language = ref('');
 const verificationCode = ref('');
 const reminber = ref(false);
 const onSubmit = () => {
-  login(name.value, password.value, language.value);
+  loginIn({
+    userName: name.value,
+    password: password.value,
+    verificationCode: language.value,
+  });
   if (name.value === 'Bruce X Wang' && password.value === 'Feng3364') {
     router.push('/home');
   } else {

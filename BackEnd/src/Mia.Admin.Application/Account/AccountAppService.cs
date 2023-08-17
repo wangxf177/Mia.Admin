@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Services;
 
 namespace Mia.Admin.Account
 {
-    public class AccountAppService : IAccountAppService
+    public class AccountAppService : ApplicationService, IAccountAppService
     {
         private readonly JwtConfig _jwtConfig;
 

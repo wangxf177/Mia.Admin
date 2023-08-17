@@ -11,7 +11,7 @@ using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories.MongoDB;
 using Volo.Abp.MongoDB;
 
-namespace Mia.Admin.MongoDb
+namespace Mia.Admin.Repositories
 {
     public class MiaRepository<TEntity> : MongoDbRepository<MiaMongoDbContext, TEntity, Guid>, IMiaRepository<TEntity> where TEntity : class, IEntity<Guid>
     {
